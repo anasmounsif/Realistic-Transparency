@@ -3,40 +3,50 @@ Three-dimensional Graphics Fundamentals Project
 
 ## Martini
 
-resolution:
+![](render/martini.bmp)
+
+**resolution**: 1080p
 <br/>
-number of samples:
+number of **samples**: 1024
 <br/>
-number of rebounds:
+number of **rebounds**: 7
 
 ## Shot
 
-resolution:
+![](render/shot.bmp)
+
+**resolution**: 1080p
 <br/>
-number of samples:
+number of **samples**: 1024
 <br/>
-number of rebounds:
+number of **rebounds**: 8
 
 ## Cocktail
 
-resolution:
+![](render/Cocktail.bmp)
+
+**resolution**: 1080p
 <br/>
-number of samples:
+number of **samples**: 1024
 <br/>
-number of rebounds:
+number of **rebounds**: 8
 
 ## Wine
 
-resolution:
+![](render/Wine.bmp)
+
+**resolution**: 1080p
 <br/>
-number of samples:
+number of **samples**: 1024
 <br/>
-number of rebounds:
+number of **rebounds**: 8
 
 ## Amaro
 
-resolution:
+![]()
+
+**resolution**: 720p
 <br/>
-number of samples:
+number of **samples**: 1024
 <br/>
-number of rebounds:
+number of **rebounds**: 8
