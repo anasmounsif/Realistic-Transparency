@@ -41,7 +41,7 @@ Resolution | Samples | Rebounds
 ### Amaro
 
 ![](GIFs/Amaro.gif)
-![]()
+![](render/Amaro.bmp)
 
 Resolution | Samples | Rebounds
 --- | --- | ---
