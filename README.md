@@ -1,57 +1,48 @@
 # Realistic-Transparency
 Three-dimensional Graphics Fundamentals Project
 
-## Martini
+### Martini
 
 ![](GIFs/Martini.gif)
 ![](render/martini.bmp)
 
-*Resolution*: 1080p
-<br/>
-Number of *samples*: 1024
-<br/>
-Number of *rebounds*: 7
+Resolution | Samples | Rebounds
+--- | --- | ---
+**1080p** | 1024 | 7
 
-## Shot
+### Shot
 
 ![](GIFs/Shot.gif)
 ![](render/shot.bmp)
 
-*Resolution*: 1080p
-<br/>
-Number of *samples*: 1024
-<br/>
-Number of *rebounds*: 8
+Resolution | Samples | Rebounds
+--- | --- | ---
+**1080p** | 1024 | 8
 
-## Cocktail
+### Cocktail
 
 ![](GIFs/Cocktail.gif)
 ![](render/Cocktail.bmp)
 
-*Resolution*: 1080p
-<br/>
-Number of *samples*: 1024
-<br/>
-Number of *rebounds*: 8
+Resolution | Samples | Rebounds
+--- | --- | ---
+**1080p** | 1024 | 8
 
-## Wine
+### Wine
 
 ![](GIFs/Wine.gif)
 ![](render/Wine.bmp)
 
-*Resolution*: 1080p
-<br/>
-Number of *samples*: 1024
-<br/>
-Number of *rebounds*: 8
+Resolution | Samples | Rebounds
+--- | --- | ---
+**1080p** | 1024 | 8
 
-## Amaro
+
+### Amaro
 
 ![](GIFs/Amaro.gif)
 ![]()
 
-*Resolution*: 720p
-<br/>
-Number of *samples*: 1024
-<br/>
-Number of *rebounds*: 8
+Resolution | Samples | Rebounds
+--- | --- | ---
+**720p** | 1024 | 8
