@@ -90,8 +90,8 @@ void martini() {
 	material* light = new diffuse_light(new constant_texture(color_intensity));
 	material* white = new lambertian(new constant_texture(color(0.73, 0.73, 0.73)));
 
-	// Usa profondità, larghezza e altezza per cambiare forma alla stanza.
-	// Lungo z - Profondità
+	// Usa profonditï¿½, larghezza e altezza per cambiare forma alla stanza.
+	// Lungo z - Profonditï¿½
 	float depth11 = 15.0f; // z positive
 	float depth12 = 3.0f; // z negative, uguale di default
 	// Lungo x - Larghezza
@@ -184,48 +184,16 @@ void martini() {
 	material* vetro_aria = new dielectric(vetro, aria, neutro, neutro);
 	material* alcool_aria = new dielectric(alcool, aria, martini, neutro);
 	material* alcool_vetro = new dielectric(alcool, vetro, neutro, martini);
+    material* texture_oliva = new lambertian(new image_texture("../texture/martini/texture_oliva.jpg"));
 
-	// Disco liquido superiore
-	object* model3d_disco_sup = new mesh("../models/martini/contatto_liquido_aria.obj");
-	instance* mesh_ptr_disco_sup = new instance(model3d_disco_sup, alcool_aria);
-	world.addObject(mesh_ptr_disco_sup);
-
-	// Parte superiore
-	object* model3d_bicchiere_sup = new mesh("../models/martini/bicchiere_superiore.obj");
-	instance* mesh_ptr_bicchiere_sup = new instance(model3d_bicchiere_sup, vetro_aria);
-	world.addObject(mesh_ptr_bicchiere_sup);
-
-	// Oliva superiore
-	object* model3d_oliva_sup = new mesh("../models/martini/oliva_grande.obj");
-	material* texture_oliva_sup = new lambertian(new image_texture("../texture/martini/texture_oliva.jpg"));
-	instance* mesh_ptr_oliva_sup = new instance(model3d_oliva_sup, texture_oliva_sup);
-	world.addObject(mesh_ptr_oliva_sup);
-
-	// Oliva inferiore
-	object* model3d_oliva_inf = new mesh("../models/martini/oliva_piccola.obj");
-	material* texture_oliva_inf = new lambertian(new image_texture("../texture/martini/texture_oliva.jpg"));
-	instance* mesh_ptr_oliva_inf = new instance(model3d_oliva_inf, texture_oliva_inf);
-	world.addObject(mesh_ptr_oliva_inf);
-
-	// Liquido
-	object* model3d_liquido_sup = new mesh("../models/martini/liquido.obj");
-	instance* mesh_ptr_liquido_sup = new instance(model3d_liquido_sup, alcool_vetro);
-	world.addObject(mesh_ptr_liquido_sup);
-
-	// Stuzzicadenti
-	object* model3d_stuzzicandenti = new mesh("../models/martini/stuzzicadenti.obj");
-	instance* mesh_ptr_stuzzicandenti = new instance(model3d_stuzzicandenti, legno);
-	world.addObject(mesh_ptr_stuzzicandenti);
-
-	// Bicchiere Inferiore
-	object* model3d_bicchiere_inf = new mesh("../models/martini/bicchiere_inferiore_esterno.obj");
-	instance* mesh_ptr_bicchiere_inf = new instance(model3d_bicchiere_inf, vetro_aria);
-	world.addObject(mesh_ptr_bicchiere_inf);
-
-	// Stelo
-	object* model3d_stelo = new mesh("../models/martini/stelo.obj");
-	instance* mesh_ptr_stelo = new instance(model3d_stelo, vetro_aria);
-	world.addObject(mesh_ptr_stelo);
+    add_model("../models/martini/contatto_liquido_aria.obj", alcool_aria); // Disco liquido superiore
+    add_model("../models/martini/bicchiere_superiore.obj", vetro_aria); // Parte superiore
+    add_model("../models/martini/oliva_grande.obj", texture_oliva); // Oliva superiore
+    add_model("../models/martini/oliva_piccola.obj", texture_oliva); // Oliva inferiore
+    add_model("../models/martini/liquido.obj", alcool_vetro); // Liquido
+    add_model("../models/martini/stuzzicadenti.obj", legno); // Stuzzicadenti
+    add_model("../models/martini/bicchiere_inferiore_esterno.obj", vetro_aria); // Bicchiere Inferiore
+    add_model("../models/martini/stelo.obj", vetro_aria); // Stelo
 
 	//***************************************************************************
 
@@ -335,10 +303,9 @@ void cocktail_wine() {
 	// Floor
 	rectangle_model = new rectangle(point3D(width11, -height12, depth11), point3D(width11, -height12, -depth12), point3D(-width12, -height12, -depth12), point3D(-width12, -height12, depth11));
 	rectangle_ptr = new instance(rectangle_model, texture_floor);
+    world.addObject(rectangle_ptr);
 
 	/* LIGHTS ------ */
-
-	world.addObject(rectangle_ptr);
 
 	// Depth
 	depth11 = 3.5f; // z positive
@@ -395,47 +362,15 @@ void shot() {
 	material* vetro_acqua_inf = new dielectric(alcool, vetro, neutro, viola_vivace);
 	/// ***
 
-
 	/// *** Cicchetto
-	// Parte superiore
-	object* model3d_bicchiere_sup = new mesh("../models/shot/Bicchiere_superiore.obj");
-	instance* mesh_ptr_bicchiere_sup = new instance(model3d_bicchiere_sup, vetro_aria);
-	world.addObject(mesh_ptr_bicchiere_sup);
-
-	// Disco liquido superiore
-	object* model3d_disco_sup = new mesh("../models/shot/Liquido_aria.obj");
-	instance* mesh_ptr_disco_sup = new instance(model3d_disco_sup, acqua_aria);
-	world.addObject(mesh_ptr_disco_sup);
-
-	// Liquido Superiore
-	object* model3d_liquido_sup = new mesh("../models/shot/liquido_3_strati/Liquido_superiore.obj");
-	instance* mesh_ptr_liquido_sup = new instance(model3d_liquido_sup, vetro_acqua1);
-	world.addObject(mesh_ptr_liquido_sup);
-
-	// Disco liquido-liquido superiore
-	object* model3d_disco_liquido_liquido_sup = new mesh("../models/shot/liquido_3_strati/Liquido_Liquido_superiore.obj");
-	instance* mesh_ptr_disco_liquido_liquido_sup = new instance(model3d_disco_liquido_liquido_sup, acqua_acqua_sup);
-	world.addObject(mesh_ptr_disco_liquido_liquido_sup);
-
-	// Liquido Intermedio
-	object* model3d_liquido_intermedio = new mesh("../models/shot/liquido_3_strati/Liquido_intermedio.obj");
-	instance* mesh_ptr_liquido_intermedio = new instance(model3d_liquido_intermedio, vetro_acqua2);
-	world.addObject(mesh_ptr_liquido_intermedio);
-
-	// Disco liquido-liquido inferiore
-	object* model3d_disco_liquido_liquido_inf = new mesh("../models/shot/liquido_3_strati/Liquido_Liquido_inferiore.obj");
-	instance* mesh_ptr_disco_liquido_liquido_inf = new instance(model3d_disco_liquido_liquido_inf, acqua_acqua_inf);
-	world.addObject(mesh_ptr_disco_liquido_liquido_inf);
-
-	// Liquido Inferiore
-	object* model3d_liquido_inf = new mesh("../models/shot/liquido_3_strati/Liquido_inferiore.obj");
-	instance* mesh_ptr_liquido_inf = new instance(model3d_liquido_inf, vetro_acqua_inf);
-	world.addObject(mesh_ptr_liquido_inf);
-
-	// Parte inferiore
-	object* model3d_bicchiere_inf = new mesh("../models/shot/Bicchiere_inferiore.obj");
-	instance* mesh_ptr_bicchiere_inf = new instance(model3d_bicchiere_inf, vetro_aria);
-	world.addObject(mesh_ptr_bicchiere_inf);
+    add_model("../models/shot/Bicchiere_superiore.obj", vetro_aria); // Parte superiore
+    add_model("../models/shot/Liquido_aria.obj", acqua_aria); 	// Disco liquido superiore
+    add_model("../models/shot/liquido_3_strati/Liquido_superiore.obj", vetro_acqua1); 	// Liquido Superiore
+    add_model("../models/shot/liquido_3_strati/Liquido_Liquido_superiore.obj", acqua_acqua_sup); // Disco liquido-liquido superiore
+    add_model("../models/shot/liquido_3_strati/Liquido_intermedio.obj", vetro_acqua2); // Liquido Intermedio
+    add_model("../models/shot/liquido_3_strati/Liquido_Liquido_inferiore.obj", acqua_acqua_inf); // Disco liquido-liquido inferiore
+    add_model("../models/shot/liquido_3_strati/Liquido_inferiore.obj", vetro_acqua_inf); // Liquido Inferiore
+    add_model("../models/shot/Bicchiere_inferiore.obj", vetro_aria); // Parte inferiore
 	// ***
 }
 
@@ -448,15 +383,13 @@ void room_shot() {
 	vector3D up(0, 1, 0);
 	world.setCamera(lookfrom, lookat, up, 45, nx, ny, ns, nr);
 
-
 	/// Room
 	color color_intensity = color(4.0f, 4.0f, 4.0f);
 	material* light = new diffuse_light(new constant_texture(color_intensity));
 	material* white = new lambertian(new constant_texture(color(0.73, 0.73, 0.73)));
 
-
-	// Usa profondità, larghezza e altezza per cambiare forma alla stanza.
-	// Lungo z - Profondità
+	// Usa profonditï¿½, larghezza e altezza per cambiare forma alla stanza.
+	// Lungo z - Profonditï¿½
 	float depth11 = 20.0f; // z positive
 	float depth12 = depth11; // z negative, uguale di default
 	// Lungo x - Larghezza
@@ -466,7 +399,6 @@ void room_shot() {
 	float height11 = 11.2f; // y positive
 	float height12 = height11; // y negative, uguale di default
 
-
 	material* sfondo = new lambertian(new image_texture("../texture/shot/sfondo.jpg"));
 	material* pavimento = new lambertian(new image_texture("../texture/shot/pavimento5.jpg"));
 
@@ -474,7 +406,6 @@ void room_shot() {
 	object* rectangle_model = new rectangle(point3D(-width12, -height12, -depth12), point3D(width11, -height12, -depth12), point3D(width11, height11, -depth12), point3D(-width12, height11, -depth12));
 	instance* rectangle_ptr = new instance(rectangle_model, sfondo);
 	world.addObject(rectangle_ptr);
-
 
 	// Floor Texture
 	float height = 0.0f; // lungo y
@@ -494,7 +425,6 @@ void room_shot() {
 	rectangle_ptr = new instance(rectangle_model, white);
 	world.addObject(rectangle_ptr);
 
-
 	// Right wall
 	rectangle_model = new rectangle(point3D(width11, -height12, -depth12), point3D(width11, -height12, depth11), point3D(width11, height11, depth11), point3D(width11, height11, -depth12));
 	rectangle_ptr = new instance(rectangle_model, white);
@@ -509,7 +439,6 @@ void room_shot() {
 	rectangle_model = new rectangle(point3D(width11, -height12, depth11), point3D(width11, -height12, -depth12), point3D(-width12, -height12, -depth12), point3D(-width12, -height12, depth11));
 	rectangle_ptr = new instance(rectangle_model, pavimento);
 	world.addObject(rectangle_ptr);
-
 
 	//// Luci
 	// Luce Sferica Right
@@ -543,7 +472,6 @@ void room_shot() {
 	sphere_ptr = new instance(sphere_model, light);
 	sphere_ptr->translate(0.0f, height_lights, 4.2f);
 	world.addObject(sphere_ptr);
-
 }
 
 void scene_shot() {
@@ -565,7 +493,6 @@ void lucano() {
 	float alcool = 1.365f;
 	float ghiaccio = 1.31;
 
-
 	// Parte Superiore & Parte Inferiore
 	material* vetro_aria = new dielectric(vetro, aria, neutro, neutro);
 
@@ -580,30 +507,13 @@ void lucano() {
 	/// ***
 
 	/// *** Amaro Lucano
-	// Parte superiore
-	object* model3d_bicchiere_sup = new mesh("../models/shot/Bicchiere_superiore.obj");
-	instance* mesh_ptr_bicchiere_sup = new instance(model3d_bicchiere_sup, vetro_aria);
-	world.addObject(mesh_ptr_bicchiere_sup);
 
-	// Disco liquido superiore
-	object* model3d_disco_sup = new mesh("../models/shot/Liquido_aria.obj");
-	instance* mesh_ptr_disco_sup = new instance(model3d_disco_sup, acqua_aria);
-	world.addObject(mesh_ptr_disco_sup);
+    add_model("../models/shot/Bicchiere_superiore.obj", vetro_aria); // Parte superiore
+    add_model("../models/shot/Liquido_aria.obj", acqua_aria); // Disco liquido superiore
+    add_model("../models/shot/Ghiaccio.obj", ghiaccio_alcool); // Ghiaccio
+    add_model("../models/shot/Liquido_mod/Liquido.obj", vetro_acqua); // Liquido Superiore
+    add_model("../models/shot/Bicchiere_inferiore.obj", vetro_aria); // Parte inferiore
 
-	// Ghiaccio
-	object* model3d_ghiaccio = new mesh("../models/shot/Ghiaccio.obj");
-	instance* mesh_ptr_ghiaccio = new instance(model3d_ghiaccio, ghiaccio_alcool);
-	world.addObject(mesh_ptr_ghiaccio);
-
-	// Liquido Superiore
-	object* model3d_liquido_sup = new mesh("../models/shot/Liquido_mod/Liquido.obj");
-	instance* mesh_ptr_liquido_sup = new instance(model3d_liquido_sup, vetro_acqua);
-	world.addObject(mesh_ptr_liquido_sup);
-
-	// Parte inferiore
-	object* model3d_bicchiere_inf = new mesh("../models/shot/Bicchiere_inferiore.obj");
-	instance* mesh_ptr_bicchiere_inf = new instance(model3d_bicchiere_inf, vetro_aria);
-	world.addObject(mesh_ptr_bicchiere_inf);
 	/// ***
 }
 
@@ -616,14 +526,13 @@ void room_lucano() {
 	vector3D up(0, 1, 0);
 	world.setCamera(lookfrom, lookat, up, 45, nx, ny, ns, nr);
 
-
 	/// Stanza
 	color color_intensity = color(4.0f, 4.0f, 4.0f);
 	material* light = new diffuse_light(new constant_texture(color_intensity));
 	material* white = new lambertian(new constant_texture(color(0.73, 0.73, 0.73)));
 
-	// Usa profondità, larghezza e altezza per cambiare forma alla stanza.
-	// Lungo z - Profondità
+	// Usa profonditï¿½, larghezza e altezza per cambiare forma alla stanza.
+	// Lungo z - Profonditï¿½
 	float depth11 = 5.0f; // z positive
 	float depth12 = 1.9; // z negative
 	// Lungo x - Larghezza
@@ -632,7 +541,6 @@ void room_lucano() {
 	//lungo y - Altezza
 	float height11 = 10.0f; // y positive
 	float height12 = height11; // y negative
-
 
 	material* pavimento = new lambertian(new image_texture("../texture/lucano/pavimento_amaro9.jpg"));
 	material* sfondo = new lambertian(new image_texture("../texture/lucano/parete_amaro6.jpg"));
@@ -678,7 +586,7 @@ void room_lucano() {
 
 	//// Luce Rettangolare
 
-	// Lungo z - Profondità
+	// Lungo z - Profonditï¿½
 	depth11 = 1.5f; // z positive
 	depth12 = depth11; // z negative, uguale di default
 	// Lungo x - Larghezza
@@ -712,9 +620,7 @@ int main(int argc, char* argv[])
 	time_t start, end;
 	time(&start);
 
-
 	world.parallel_render();
-	
 
 	time(&end);
 	double dif = difftime(end, start);
@@ -746,8 +652,6 @@ int main(int argc, char* argv[])
 			}
 		}
 	}
-
 	close();
 	return 0;
 }
-

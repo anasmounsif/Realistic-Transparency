@@ -3,50 +3,55 @@ Three-dimensional Graphics Fundamentals Project
 
 ## Martini
 
+![](GIFs/Martini.gif)
 ![](render/martini.bmp)
 
-**resolution**: 1080p
+*Resolution*: 1080p
 <br/>
-number of **samples**: 1024
+Number of *samples*: 1024
 <br/>
-number of **rebounds**: 7
+Number of *rebounds*: 7
 
 ## Shot
 
+![](GIFs/Shot.gif)
 ![](render/shot.bmp)
 
-**resolution**: 1080p
+*Resolution*: 1080p
 <br/>
-number of **samples**: 1024
+Number of *samples*: 1024
 <br/>
-number of **rebounds**: 8
+Number of *rebounds*: 8
 
 ## Cocktail
 
+![](GIFs/Cocktail.gif)
 ![](render/Cocktail.bmp)
 
-**resolution**: 1080p
+*Resolution*: 1080p
 <br/>
-number of **samples**: 1024
+Number of *samples*: 1024
 <br/>
-number of **rebounds**: 8
+Number of *rebounds*: 8
 
 ## Wine
 
+![](GIFs/Wine.gif)
 ![](render/Wine.bmp)
 
-**resolution**: 1080p
+*Resolution*: 1080p
 <br/>
-number of **samples**: 1024
+Number of *samples*: 1024
 <br/>
-number of **rebounds**: 8
+Number of *rebounds*: 8
 
 ## Amaro
 
+![](GIFs/Amaro.gif)
 ![]()
 
-**resolution**: 720p
+*Resolution*: 720p
 <br/>
-number of **samples**: 1024
+Number of *samples*: 1024
 <br/>
-number of **rebounds**: 8
+Number of *rebounds*: 8
