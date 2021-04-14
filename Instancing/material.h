@@ -60,14 +60,14 @@ public:
 float fresnel(const hit_record& rec, const ray& r, float eta) {
 	// Calculation of the Reflection coefficient (kr)
 
-	vector3D normale = rec.normal;
-	float ndotd = dot(-normale, normalize(r.direction()));
+	vector3D normal = rec.normal;
+	float ndotd = dot(-normal, normalize(r.direction()));
 	if (ndotd < 0.0f) {
 		// Ray hits inside surface.
-		normale = -normale;
+		normal = -normal;
 	}
 
-	float cos_theta_i = dot(-normale, normalize(r.direction()));
+	float cos_theta_i = dot(-normal, normalize(r.direction()));
 	float cos_theta_t = sqrt(1.0 - (1.0 - pow(cos_theta_i, 2)) / pow(eta, 2));
 	if (isnan(abs(cos_theta_t))) {
 		cos_theta_t = 0;
@@ -98,8 +98,8 @@ color filtering(const hit_record& rec, const ray& r, color in, color out) {
 	// out: exterior filter color.
 	// in: interior filter color.
 
-	vector3D normale = rec.normal;
-	if (dot(normalize(r.direction()), normale) > 0) {
+	vector3D normal = rec.normal;
+	if (dot(normalize(r.direction()), normal) > 0) {
 		// Ray inside.
 		return color(pow(out.r, rec.t), pow(out.g, rec.t), pow(out.b, rec.t));
 	}
@@ -157,6 +157,7 @@ public:
 		float kr = fresnel(rec, r_in, eta); 
 		if (kr == 1.0f) {
 			//If kr == 1.0f total internal reflection.
+			// kr + kt = 1 -> kt = 1 <--> kr = 0. (For the law of conservation of energy)
 			// The transmitted ray is not calculated.
 			return false;
 		}

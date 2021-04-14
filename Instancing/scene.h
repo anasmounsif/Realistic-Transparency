@@ -109,7 +109,7 @@ void scene::render() {
 	bvh_scene = new bvh_node(objs_vector, 0, objs_vector.size() - 1);
 #endif	
 	for (int j = 0; j < ny; j++) {
-		for (int i = 1000; i < nx; i++) {
+		for (int i = 0; i < nx; i++) {
 
 			color col(0.0, 0.0, 0.0);
 
