@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <string>
 #include <ctime>
-#include "SDL.h" 
+#include "SDL.h"
 #include "float.h"
 #include "vector3D.h"
 #include "point3D.h"
@@ -201,13 +201,14 @@ void martini() {
 
 void cocktail_wine() {
 
-	int scene = 1; // 1 for Wine Scene, else for Cocktail Scene
+	int scene = 3; // 1 for Wine Scene, 2 for Cocktail Scene, else for Service Scene
 
 	/* ENVIRONMENTS ------ */
 
 	// Colors
 	color neutral(1.0f, 1.0f, 1.0f);
-	color liquid(0.6f, 0.2f, 0.2f);
+	//color liquid(0.6f, 0.2f, 0.2f);
+	color liquid(0.99f, 0.50f, 0.20f);
 	color color_intensity(8.0f, 8.0f, 8.0f);
 	color black(0.0f, 0.0f, 0.0f);
 	color white(0.73, 0.73, 0.73);
@@ -226,8 +227,8 @@ void cocktail_wine() {
 	material* dielettric_glass_water = new dielectric(alcool, glass, neutral, liquid);
 	material* dielettric_water_air = new dielectric(alcool, air, liquid, neutral);
 	material* dielettric_ice_water = new dielectric(ice, alcool, neutral, liquid);
-	material* texture = new lambertian(new image_texture("../texture/cocktail_wine/wall.jpg"));
-	material* texture_floor = new lambertian(new image_texture("../texture/cocktail_wine/floor.jpg"));
+	material* texture = new lambertian(new image_texture("../texture/service/wall.jpg"));
+	material* texture_floor = new lambertian(new image_texture("../texture/service/floor.jpg"));
 	material* light = new diffuse_light(new constant_texture(color_intensity));
 	material* white_material = new lambertian(new constant_texture(white));
 
@@ -238,7 +239,7 @@ void cocktail_wine() {
 
 	switch (scene)
 	{
-		
+
 	case 1:
 		// Wine Scene
 		lookfrom = point3D(0.0f, 2.0f, 7.2f);
@@ -247,8 +248,8 @@ void cocktail_wine() {
 		add_model("../models/wine/CONTACT_liquid_air.obj", dielettric_water_air);
 		add_model("../models/wine/LIQUID.obj", dielettric_glass_water);
 		break;
-		
-	default:
+
+	case 2:
 		// Cocktail Scene
 		lookfrom = point3D(0.0f, 4.0f, 7.2f);
 		lookat = point3D(0.0f, 2.65f, 0.0f);
@@ -258,6 +259,22 @@ void cocktail_wine() {
 		add_model("../models/cocktail/GLASS_liquid.obj", dielettric_glass_water);
 		add_model("../models/cocktail/ICE.obj", dielettric_ice_water);
 		add_model("../models/cocktail/STRAW.obj", lambertian_black);
+		break;
+
+	default:
+		// Service Scene
+		lookfrom = point3D(1.0f, 3.5f, 6.5f);
+		lookat = point3D(1.0f, 2.4f, 0.0f);
+
+		// Service Bottle
+		add_model("../models/service/bottle/Bottiglia.obj", dielettric_glass_air);
+		add_model("../models/service/bottle/Contatto_aria_liquido.obj", dielettric_water_air);
+		add_model("../models/service/bottle/Liquido.obj", dielettric_glass_water);
+
+		// Service Glass
+		add_model("../models/service/glass/Bicchiere.obj", dielettric_glass_air);
+		add_model("../models/service/glass/Contatto_aria_liquido.obj", dielettric_water_air);
+		add_model("../models/service/glass/Liquido.obj", dielettric_glass_water);
 		break;
 	}
 
